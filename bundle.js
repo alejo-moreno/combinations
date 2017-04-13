@@ -58,7 +58,7 @@ function appendCards(idLegends) {
 
 function renderCardLegend(legend, legendsLenght, index) {
     console.log(legend.text.split("\n"));
-    var template = '<div class="card-legend">\n                        <div class="card-legend-author">\n                         <img src="http://cdn2.uvnimg.com/e1/37/d074a5e64ad7a9e7e539848d4ecc/rlc-selena.png">\n                            <div class="card-legend-author-song">\n                                <p>' + legend.author + '</p>\n                                <p>' + legend.song + '</p>\n                            </div>\n                        </div>\n                                <div class="card-legend-text">\n                                    \u201C' + legend.text.replace(/\n/g, '<br>') + '\u201D        \n                                </div>\n                        <div class="card-legend-socials">\n                            <a href="#">\n                              <img src="http://cdn1.uvnimg.com/2e/38/551afd624e6ab7019399206b6501/rlc-share-fb.png">                            \n                            </a>\n                            <a href="#">\n                              <img src="http://cdn1.uvnimg.com/90/a3/ce81f55a46578f02de5cff371636/rlc-share-tw.png">                            \n                            </a>\n                        </div>\n                        <div class="card-legend-page">\n                            ' + (index + 1) + '/' + legendsLenght + '\n                        </div>\n                    </div>';
+    var template = '<div class="card-legend">\n                        <div class="card-legend-author">\n                         <img src="' + legend.image_url + '">\n                            <div class="card-legend-author-song">\n                                <p>' + legend.author + '</p>\n                                <p>' + legend.song + '</p>\n                            </div>\n                        </div>\n                                <div class="card-legend-text">\n                                    \u201C' + legend.text.replace(/\n/g, '<br>') + '\u201D        \n                                </div>\n                        <div class="card-legend-socials">\n                            <a href="#">\n                              <img src="http://cdn1.uvnimg.com/2e/38/551afd624e6ab7019399206b6501/rlc-share-fb.png">                            \n                            </a>\n                            <a href="#">\n                              <img src="http://cdn1.uvnimg.com/90/a3/ce81f55a46578f02de5cff371636/rlc-share-tw.png">                            \n                            </a>\n                        </div>\n                        <div class="card-legend-page">\n                            ' + (index + 1) + '/' + legendsLenght + '\n                        </div>\n                    </div>';
     return template;
 }
 
@@ -74,196 +74,235 @@ var legends = [{
     id: 1,
     author: 'Jenni Rivera',
     song: 'Basta ya',
+    image_url: 'http://cdn2.uvnimg.com/e1/37/d074a5e64ad7a9e7e539848d4ecc/rlc-selena.png',
     text: 'Y basta ya de tu inconsciencia\n            De esta forma tan absurda de ver a diario\n            Como echas a la basura mi coraz\xF3n\n            Lo que te doy con rabra fe de ver en t\xED felicidad'
 }, {
     id: 2,
     author: 'Selena',
     song: 'Amor Prohibido',
+    image_url: 'http://cdn2.uvnimg.com/e1/37/d074a5e64ad7a9e7e539848d4ecc/rlc-selena.png',
     text: 'Amor prohibido murmuran por las calles\n            Porque somos de distitas sociedades\n            Amor prohibido nos dice todo el mundo\n            El dinero no importa en ti y en mi, nie en el coraz\xF3n'
 }, {
     id: 3,
     author: 'Selena',
     song: 'Amor Prohibido',
+    image_url: 'http://cdn2.uvnimg.com/e1/37/d074a5e64ad7a9e7e539848d4ecc/rlc-selena.png',
     text: 'Aunque soy pobre todo esto que te doy\n            Vale m\xE1s que el dinero poryqe s\xED es amor'
 }, {
     id: 4,
     author: 'Selena',
     song: 'Amor Prohibido',
+    image_url: 'http://cdn2.uvnimg.com/e1/37/d074a5e64ad7a9e7e539848d4ecc/rlc-selena.png',
     text: 'Con unas ansias locas quiero verte hoy\n            Espero ese momento en que escuche tu voz'
 }, {
     id: 5,
     author: 'Marco Antonio Solis',
     song: 'Basta Ya',
+    image_url: 'http://cdn2.uvnimg.com/e1/37/d074a5e64ad7a9e7e539848d4ecc/rlc-selena.png',
     text: 'Desde hoy he prohibido a mis ojos\n            El mirarte de nuevo a la cara'
 }, {
     id: 6,
     author: 'Marco Antonio Solis',
     song: 'Basta Ya',
+    image_url: 'http://cdn2.uvnimg.com/e1/37/d074a5e64ad7a9e7e539848d4ecc/rlc-selena.png',
     text: 'Tengo que renunciar a quererte antes que ya no\n            Tenga remedio si mi vida la echara tu suerte \n            Mi camino ser\xE0 un sementerio'
 }, {
     id: 7,
     author: 'Ninel Conde',
     song: 'El Bombón Asesino',
+    image_url: 'http://cdn2.uvnimg.com/e1/37/d074a5e64ad7a9e7e539848d4ecc/rlc-selena.png',
     text: 'Mi cinturita parace que a todos agita\n            Si me pongo una falda cortita\n            El meneo me la sube todita'
 }, {
     id: 8,
     author: 'Ninel Conde',
     song: 'El Bombón Asesino',
+    image_url: 'http://cdn2.uvnimg.com/e1/37/d074a5e64ad7a9e7e539848d4ecc/rlc-selena.png',
     text: 'Me dicen bomb\xF3n insaciable que soy un \n            Bomb\xF3n masticable. Me dicen bomb\xF3n'
 }, {
     id: 9,
     author: 'Ana Bárbara',
     song: 'Bandido',
+    image_url: 'http://cdn2.uvnimg.com/e1/37/d074a5e64ad7a9e7e539848d4ecc/rlc-selena.png',
     text: 'T\xFA lo sabes que la mujer que se enamora\n            Es cap\xE1z de cualquier cosa\n            Y yo doy el alma por tu amor'
 }, {
     id: 10,
     author: 'Ana Bárbara',
     song: 'Bandido',
+    image_url: 'http://cdn2.uvnimg.com/e1/37/d074a5e64ad7a9e7e539848d4ecc/rlc-selena.png',
     text: 'Te buscar\xE9 bandido, te atrapar\xE9 maldito, te lo juro\n            Pagar\xE1s por mi amor'
 }, {
     id: 11,
     author: 'Ana Bárbara',
     song: 'Loca',
+    image_url: 'http://cdn2.uvnimg.com/e1/37/d074a5e64ad7a9e7e539848d4ecc/rlc-selena.png',
     text: 'Con u\xF1as y con dientes\n            Ser\xE9 como una fiera\n            Voy a pelear de frente\n            Su amor contra cualquiera'
 }, {
     id: 12,
     author: 'Ana Bárbara',
     song: 'Loca',
+    image_url: 'http://cdn2.uvnimg.com/e1/37/d074a5e64ad7a9e7e539848d4ecc/rlc-selena.png',
     text: 'Por culpa de ese amor estoy llorando\n            Y soy como una gata sin guarida\n            Las noches me las paso dando vueltas\n            Sigu\xE9ndole las huellas a escondidas'
 }, {
     id: 13,
     author: 'Joan Sebastian',
     song: 'Tatuajes',
+    image_url: 'http://cdn2.uvnimg.com/e1/37/d074a5e64ad7a9e7e539848d4ecc/rlc-selena.png',
     text: 'Aunue eres mi necesidad, te dejo\n            Pero eso de que te olvide, no s\xE9'
 }, {
     id: 14,
     author: 'Joan Sebastian',
     song: 'Tatuajes',
+    image_url: 'http://cdn2.uvnimg.com/e1/37/d074a5e64ad7a9e7e539848d4ecc/rlc-selena.png',
     text: 'Tatuajes de tus besos llevo en todo mi cuerpo\n            Tatuados sobre el tiempo, el tiempo que te conoc\xED\n            Se me hizo vicio ver tus ojos, respirar por tu aliento\n            Me voy, pero te llevo dentro de m\xED'
 }, {
     id: 15,
     author: 'Rocío Durcal',
     song: 'El amor más bonito',
+    image_url: 'http://cdn2.uvnimg.com/e1/37/d074a5e64ad7a9e7e539848d4ecc/rlc-selena.png',
     text: 'Eres el amor m\xE0s bonito que Tengo\n            La verdad en la cual me mantengo'
 }, {
     id: 16,
     author: 'Rocío Durcal',
     song: 'El amor más bonito',
+    image_url: 'http://cdn2.uvnimg.com/e1/37/d074a5e64ad7a9e7e539848d4ecc/rlc-selena.png',
     text: 'Eres el sentir que me toca vivir\n            Llena de ilusiones y motivaciones\n            Nuevas para m\xED'
 }, {
     id: 17,
     author: 'Rocío Durcal',
     song: 'El amor más bonito',
+    image_url: 'http://cdn2.uvnimg.com/e1/37/d074a5e64ad7a9e7e539848d4ecc/rlc-selena.png',
     text: 'Tienes, en tus ojos mi f\xE9 y esperanza\n            Esa magia que nunca me cansa\n            Llevas en tu ser, tanto que aprender'
 }, {
     id: 18,
     author: 'Los Recoditos',
     song: 'Ando Bien Pedo',
+    image_url: 'http://cdn2.uvnimg.com/e1/37/d074a5e64ad7a9e7e539848d4ecc/rlc-selena.png',
     text: 'S\xE9 que estoy perdido\n            S\xE9 que estoy muriendo sin tu amor\n            Sin tu calor por tu adi\xF3s'
 }, {
     id: 19,
     author: 'Los Recoditos',
     song: 'Ando Bien Pedo',
+    image_url: 'http://cdn2.uvnimg.com/e1/37/d074a5e64ad7a9e7e539848d4ecc/rlc-selena.png',
     text: 'Ando bien pedo, bien loco\n            Cant\xE1ndole al recuerdo mis penas\n            Pidiendo tu recuerdo y tus besitos'
 }, {
     id: 20,
     author: 'Los Recoditos',
     song: 'Ando Bien Pedo',
+    image_url: 'http://cdn2.uvnimg.com/e1/37/d074a5e64ad7a9e7e539848d4ecc/rlc-selena.png',
     text: 'S\xE9 que es un castigo\n            Que me des tu olvido\n            Qu\xE9 dolor, cu\xE1nto dolor siento yo'
 }, {
     id: 21,
     author: 'Ana Gabriel',
     song: 'Tú lo Decidiste',
+    image_url: 'http://cdn2.uvnimg.com/e1/37/d074a5e64ad7a9e7e539848d4ecc/rlc-selena.png',
     text: 'Te fuiste sin siquiera despedirte\n\t    Pensaste y despu\xE9s me buscar\xE1\n\t    Pues mira te fallaron tus deseos\n\t    Y al final de cuentas fuiste t\xFA quien me extra\xF1\xF3'
 }, {
     id: 22,
     author: 'Ana Gabriel',
     song: 'Tú lo Decidiste',
+    image_url: 'http://cdn2.uvnimg.com/e1/37/d074a5e64ad7a9e7e539848d4ecc/rlc-selena.png',
     text: 'Nadie sabe lo que tiene \n\t    Hasta que lo ve perdido\n\t    Nunca t\xFA debiste decidirlo,\n\t    Pues creo que eran cosas de los dos,\n\t    Nunca tu debiste decidirlo,\n\t    Pues mira ya aprendiste la lecci\xF3n'
 }, {
     id: 23,
     author: 'Ana Gabriel',
     song: 'Tú lo Decidiste',
+    image_url: 'http://cdn2.uvnimg.com/e1/37/d074a5e64ad7a9e7e539848d4ecc/rlc-selena.png',
     text: 'Y vienes a contarme tu tristeza,\n\t    Y quieres aclarar la situaci\xF3n\n\t    Pretendes que yo olvide los detalles,\n\t    Que perdone todo y volvamos a empezar'
 }, {
     id: 24,
     author: 'Julión Álvarez',
     song: 'El Amor de su Vida',
+    image_url: 'http://cdn2.uvnimg.com/e1/37/d074a5e64ad7a9e7e539848d4ecc/rlc-selena.png',
     text: 'Yo, yo era el amor de su vida\n\t    Yo disfrut\xE9 sus caricias y su primer beso\n\t    Fue m\xEDo y fue m\xEDa'
 }, {
     id: 25,
     author: 'Julión Álvarez',
     song: 'El Amor de su Vida',
+    image_url: 'http://cdn2.uvnimg.com/e1/37/d074a5e64ad7a9e7e539848d4ecc/rlc-selena.png',
     text: 'Yo, no supe lo que ten\xEDa,\n\t    Me acostumbr\xE9 a la rutina y la hica llorar\n\t    Se maldito d\xEDa'
 }, {
     id: 26,
     author: 'Julión Álvarez',
     song: 'El Amor de su Vida',
+    image_url: 'http://cdn2.uvnimg.com/e1/37/d074a5e64ad7a9e7e539848d4ecc/rlc-selena.png',
     text: 'Puede que te digan\n\t    Que he guardado todas tus fotograf\xEDas\n\t    Que me aferro como un loco en esperanza\n\t    Que alg\xFAn d\xEDa te despiertes recordando\n\t    Que a pesar de mis errores'
 }, {
     id: 27,
     author: 'Selena',
     song: 'Como la flor',
+    image_url: 'http://cdn2.uvnimg.com/e1/37/d074a5e64ad7a9e7e539848d4ecc/rlc-selena.png',
     text: 'Yo s\xE9 que tienes un nuevo amor\n\t    Sin embargo, te deseo lo mejor\n\t    Si en m\xED, no encontraste felicidad\n\t    Tal vez, alguien m\xE1s te la dar\xE1'
 }, {
     id: 28,
     author: 'Selena',
     song: 'Como la flor',
+    image_url: 'http://cdn2.uvnimg.com/e1/37/d074a5e64ad7a9e7e539848d4ecc/rlc-selena.png',
     text: 'Si vieras c\xF3mo duele perder tu amor\n\t    Con tu adi\xF3s te llevaste mi coraz\xF3n'
 }, {
     id: 29,
     author: 'Los Ángeles Azules',
     song: 'Cómo te voy a Olvidar',
+    image_url: 'http://cdn2.uvnimg.com/e1/37/d074a5e64ad7a9e7e539848d4ecc/rlc-selena.png',
     text: 'Si en una rosa est\xE1s t\xFA\n\t    Si en cada respirar est\xE1s t\xFA\n\t    C\xF3mo te voy a olvidar'
 }, {
     id: 30,
     author: 'Los Ángeles Azules',
     song: 'Cómo te voy a Olvidar',
+    image_url: 'http://cdn2.uvnimg.com/e1/37/d074a5e64ad7a9e7e539848d4ecc/rlc-selena.png',
     text: 'C\xF3mo no acordarme de t\xED\n\t    De qu\xE9 manera olvidarte\n\t    Si todo me recuerda a t\xED\n\t    En tods partes est\xE1s t\xFA'
 }, {
     id: 31,
     author: 'Banda MS',
     song: 'Me vas a Extrañar',
+    image_url: 'http://cdn2.uvnimg.com/e1/37/d074a5e64ad7a9e7e539848d4ecc/rlc-selena.png',
     text: 'No me alcanz\xF3 el cari\xF1o \n\t    Para verte contenta\n\t    Te amaba como un loco\n\t    Y no te diste cuenta'
 }, {
     id: 32,
     author: 'Banda MS',
     song: 'Me vas a Extrañar',
+    image_url: 'http://cdn2.uvnimg.com/e1/37/d074a5e64ad7a9e7e539848d4ecc/rlc-selena.png',
     text: 'De qu\xE9 sirvi\xF3 rogarte\n\t    Para que te quedaras\n\t    Mi error fue darte todo\n\t    Cuando no vales nada'
 }, {
     id: 33,
     author: 'Banda MS',
     song: 'Me vas a Extrañar',
+    image_url: 'http://cdn2.uvnimg.com/e1/37/d074a5e64ad7a9e7e539848d4ecc/rlc-selena.png',
     text: 'Me vas a extra\xF1ar\n\t    Te apuesto lo que quieras que vas a buscarme\n\t    Y vas a llorar porque t\xFA a mi\n\t    Jam\xE1s supiste valorarme'
 }, {
     id: 34,
     author: 'Banda El Recodo',
     song: 'El Sinaloense',
+    image_url: 'http://cdn2.uvnimg.com/e1/37/d074a5e64ad7a9e7e539848d4ecc/rlc-selena.png',
     text: 'Por Dios que borracho vengo\n\t    Que me echan con la "tambora"\n\t    Que me toquen el "Quelite"\n\t    Despu\xE9s el "Ni\xF1o perdido"\n\t    Y por \xFAltimo "El torito"\n\t    Pa\' que vean c\xF3mo le brinco'
 }, {
     id: 35,
     author: 'Banda El Recodo',
     song: 'El Sinaloense',
+    image_url: 'http://cdn2.uvnimg.com/e1/37/d074a5e64ad7a9e7e539848d4ecc/rlc-selena.png',
     text: 'Soy del mero Sianloa\n\t    Donde se rompen las olas\n\t    Y busco una que ande sola\n\t    Y que no tenga marido\n\t    Pa\' no estar comprometido\n\t    Cuando resulte la boda'
 }, {
     id: 36,
     author: 'La arrolladora Banda El Limón',
     song: 'Me va a pesar',
+    image_url: 'http://cdn2.uvnimg.com/e1/37/d074a5e64ad7a9e7e539848d4ecc/rlc-selena.png',
     text: 'Nunca lo entend\xED, t\xFA me diste todo\n\t    Y yo jam\xE1s te daba lo que merec\xEDas\n\t    Cu\xE1ntas veces te he visto llorar y ha sido culpa m\xEDa\n\t    Entre m\xE1s buena eras conmigo, yo m\xE1s te ofend\xEDa'
 }, {
     id: 37,
     author: 'La arrolladora Banda El Limón',
     song: 'Me va a pesar',
+    image_url: 'http://cdn2.uvnimg.com/e1/37/d074a5e64ad7a9e7e539848d4ecc/rlc-selena.png',
     text: 'Me va a pesar, yo s\xE9 bien que me va a pesar\n\t    Cuando te vea con alguien m\xE1s y te empiece a besar\n\t    No valor\xE9 lo uie me dabas, tu coraz\xF3n lastimaba\n\t    S\xF3lo te hac\xEDa llorar'
 }, {
     id: 38,
     author: 'Chayito Valdéz',
     song: 'Tres veces te engañé',
+    image_url: 'http://cdn2.uvnimg.com/e1/37/d074a5e64ad7a9e7e539848d4ecc/rlc-selena.png',
     text: 'T\xFA que me dejabas\n\t    Yo que te esperaba\n\t    Porque tontamente\n\t    Simpre te era fiel'
 }, {
     id: 39,
     author: 'Chayito Valdéz',
     song: 'Tres veces te engañé',
+    image_url: 'http://cdn2.uvnimg.com/e1/37/d074a5e64ad7a9e7e539848d4ecc/rlc-selena.png',
     text: 'Tres veces te enga\xF1\xE9\n\t    La primera por coraje\n\t    La segunda por cari\xF1o\n\t    La tercera por placer'
 }];
 

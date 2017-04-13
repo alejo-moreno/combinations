@@ -48,7 +48,7 @@ function renderCardLegend(legend, legendsLenght, index) {
     console.log(legend.text.split("\n"))
     var template = `<div class="card-legend">
                         <div class="card-legend-author">
-                         <img src="http://cdn2.uvnimg.com/e1/37/d074a5e64ad7a9e7e539848d4ecc/rlc-selena.png">
+                         <img src="${legend.image_url}">
                             <div class="card-legend-author-song">
                                 <p>${legend.author}</p>
                                 <p>${legend.song}</p>
