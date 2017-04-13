@@ -18,11 +18,13 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 var gameContainer = $('.game-container');
 var started = false;
 
-gameContainer.on('click', '.game-buttons a', function () {
+gameContainer.on('click', '.game-buttons a', function (event) {
     var buttonSelected = $(this);
     buttonSelected.toggleClass('active');
     var idLegends = getIntersection();
     appendCards(idLegends);
+
+    event.preventDefault();
 });
 
 function getIntersection() {
@@ -35,7 +37,7 @@ function getIntersection() {
 }
 
 function appendCards(idLegends) {
-    //carousel.slick('removeSlide', null, null, true);    
+
     var carousel = gameContainer.find('.game-result');
     if (!started) {
         carousel.slick();
@@ -43,84 +45,226 @@ function appendCards(idLegends) {
     }
 
     carousel.slick('removeSlide', null, null, true);
+    if (idLegends.length == 0) {
+        return carousel.slick('slickAdd', renderEmptyCard());
+    }
     //Iterate over legend ids and find the correspondent text in legends.js
-    idLegends.map(function (id) {
-        //carousel.append(renderCardLegend(legends.find(x => x.id == id)));
+    idLegends.map(function (id, index) {
         carousel.slick('slickAdd', renderCardLegend(_legends2.default.find(function (x) {
             return x.id == id;
-        })));
+        }), idLegends.length, index));
     });
 }
 
-function renderCardLegend(legend) {
+function renderCardLegend(legend, legendsLenght, index) {
     console.log(legend.text.split("\n"));
-    var template = '<div class="card-legend">\n                        <div class="card-legend-author"></div>\n                                <div class="card-legend-text">\n                                    ' + legend.text.replace(/\n/g, '<br>') + '        \n                                </div>\n                        <div class="card-legend-socials"></div>\n                    </div>';
+    var template = '<div class="card-legend">\n                        <div class="card-legend-author">\n                         <img src="http://cdn2.uvnimg.com/e1/37/d074a5e64ad7a9e7e539848d4ecc/rlc-selena.png">\n                            <div class="card-legend-author-song">\n                                <p>' + legend.author + '</p>\n                                <p>' + legend.song + '</p>\n                            </div>\n                        </div>\n                                <div class="card-legend-text">\n                                    \u201C' + legend.text.replace(/\n/g, '<br>') + '\u201D        \n                                </div>\n                        <div class="card-legend-socials">\n                            <a href="#">\n                              <img src="http://cdn1.uvnimg.com/2e/38/551afd624e6ab7019399206b6501/rlc-share-fb.png">                            \n                            </a>\n                            <a href="#">\n                              <img src="http://cdn1.uvnimg.com/90/a3/ce81f55a46578f02de5cff371636/rlc-share-tw.png">                            \n                            </a>\n                        </div>\n                        <div class="card-legend-page">\n                            ' + (index + 1) + '/' + legendsLenght + '\n                        </div>\n                    </div>';
+    return template;
+}
+
+function renderEmptyCard() {
+    var template = '<div class="card-legend">                        \n                        <div class="card-legend-content">\n                            <p>Intenta de nuevo, <span>no tenemos resultados.</span></p>\n                        </div>                        \n                        <div class="card-legend-page">\n                            0/0\n                        </div>\n                    </div>';
     return template;
 }
 
 },{"legends":2,"lodash.intersection":4,"matrix":3}],2:[function(require,module,exports){
-"use strict";
+'use strict';
 
 var legends = [{
     id: 1,
-    text: "Y basta ya de tu inconsciencia \n               De esta forma tan absurda de ver a diario\n               Como echas a la basura mi coraz\xF3n\n               Lo que te doy con rabra fe de ver en t\xED felicidad"
+    author: 'Jenni Rivera',
+    song: 'Basta ya',
+    text: 'Y basta ya de tu inconsciencia\n            De esta forma tan absurda de ver a diario\n            Como echas a la basura mi coraz\xF3n\n            Lo que te doy con rabra fe de ver en t\xED felicidad'
 }, {
     id: 2,
-    text: "Amor prohibido murmuran por las calles\n            Porque somos de distitas sociedades\n            Amor prohibido nos dice todo el mundo\n            El dinero no importa en ti y en mi, ni en el coraz\xF3n"
+    author: 'Selena',
+    song: 'Amor Prohibido',
+    text: 'Amor prohibido murmuran por las calles\n            Porque somos de distitas sociedades\n            Amor prohibido nos dice todo el mundo\n            El dinero no importa en ti y en mi, nie en el coraz\xF3n'
 }, {
     id: 3,
-    text: "Aunque soy pobre todo esto que te doy\n            vale m\xE1s que el dinero poryqe s\xED es amor"
+    author: 'Selena',
+    song: 'Amor Prohibido',
+    text: 'Aunque soy pobre todo esto que te doy\n            Vale m\xE1s que el dinero poryqe s\xED es amor'
 }, {
     id: 4,
-    text: "Con unas ansias locas quiero verte hoy\n               Espero ese momento en que escuche tu voz"
+    author: 'Selena',
+    song: 'Amor Prohibido',
+    text: 'Con unas ansias locas quiero verte hoy\n            Espero ese momento en que escuche tu voz'
 }, {
     id: 5,
-    text: "Desde hoy he prohibido a mis ojos\n            el mirarte de nuevo a la cara"
+    author: 'Marco Antonio Solis',
+    song: 'Basta Ya',
+    text: 'Desde hoy he prohibido a mis ojos\n            El mirarte de nuevo a la cara'
 }, {
     id: 6,
-    text: "Tengo que renunciar a quererte antes que ya no\n            tenga remedio si mi vida la echara tu suerte \n            mi camino ser\xE0 un sementerio"
+    author: 'Marco Antonio Solis',
+    song: 'Basta Ya',
+    text: 'Tengo que renunciar a quererte antes que ya no\n            Tenga remedio si mi vida la echara tu suerte \n            Mi camino ser\xE0 un sementerio'
 }, {
     id: 7,
-    text: "Mi cinturita parace que a todos agita\n            si me pongo una falda cortita\n            el meneo me la sube todita"
+    author: 'Ninel Conde',
+    song: 'El Bombón Asesino',
+    text: 'Mi cinturita parace que a todos agita\n            Si me pongo una falda cortita\n            El meneo me la sube todita'
 }, {
     id: 8,
-    text: "Me dicen bomb\xF3n insaciable que soy un \n            bomb\xF3n masticable. Me dicen bomb\xF3n"
+    author: 'Ninel Conde',
+    song: 'El Bombón Asesino',
+    text: 'Me dicen bomb\xF3n insaciable que soy un \n            Bomb\xF3n masticable. Me dicen bomb\xF3n'
 }, {
     id: 9,
-    text: "T\xFA lo sabes que la mujer que se enamora\n            es cap\xE1z de cualquier cosa\n            y yo doy el alma por tu amor"
+    author: 'Ana Bárbara',
+    song: 'Bandido',
+    text: 'T\xFA lo sabes que la mujer que se enamora\n            Es cap\xE1z de cualquier cosa\n            Y yo doy el alma por tu amor'
 }, {
     id: 10,
-    text: "Te buscar\xE9 bandido, te atrapar\xE9 maldito, te lo juro\n            pagar\xE1s por mi amor"
+    author: 'Ana Bárbara',
+    song: 'Bandido',
+    text: 'Te buscar\xE9 bandido, te atrapar\xE9 maldito, te lo juro\n            Pagar\xE1s por mi amor'
 }, {
     id: 11,
-    text: "Con u\xF1as y con dientes\n            ser\xE9 como una fiera\n            voy a pelear de frente\n            su amor contra cualquiera"
+    author: 'Ana Bárbara',
+    song: 'Loca',
+    text: 'Con u\xF1as y con dientes\n            Ser\xE9 como una fiera\n            Voy a pelear de frente\n            Su amor contra cualquiera'
 }, {
     id: 12,
-    text: "Por culpa de ese amor estoy llorando\n            y soy como una gata sin guarida\n            las noches me las paso dando vueltas\n            sigu\xE9ndole las huellas a escondidas"
+    author: 'Ana Bárbara',
+    song: 'Loca',
+    text: 'Por culpa de ese amor estoy llorando\n            Y soy como una gata sin guarida\n            Las noches me las paso dando vueltas\n            Sigu\xE9ndole las huellas a escondidas'
 }, {
     id: 13,
-    text: "Aunue eres mi necesidad, te dejo\n            pero eso de que te olvide, no s\xE9"
+    author: 'Joan Sebastian',
+    song: 'Tatuajes',
+    text: 'Aunue eres mi necesidad, te dejo\n            Pero eso de que te olvide, no s\xE9'
 }, {
     id: 14,
-    text: "Tatuajes de tus besos llevo en todo mi cuerpo\n            tatuados sobre el tiempo, el tiempo que te conoc\xED\n            se me hizo vicio ver tus ojos, respirar por tu aliento\n            me voy, pero te llevo dentro de m\xED"
+    author: 'Joan Sebastian',
+    song: 'Tatuajes',
+    text: 'Tatuajes de tus besos llevo en todo mi cuerpo\n            Tatuados sobre el tiempo, el tiempo que te conoc\xED\n            Se me hizo vicio ver tus ojos, respirar por tu aliento\n            Me voy, pero te llevo dentro de m\xED'
 }, {
     id: 15,
-    text: "Eres el amor m\xE0s bonito que Tengo\n            la verdad en la cual me mantengo"
+    author: 'Rocío Durcal',
+    song: 'El amor más bonito',
+    text: 'Eres el amor m\xE0s bonito que Tengo\n            La verdad en la cual me mantengo'
 }, {
     id: 16,
-    text: "Eres el sentir que me toca vivir\n            llena de ilusiones y motivaciones\n            nuevas para m\xED"
+    author: 'Rocío Durcal',
+    song: 'El amor más bonito',
+    text: 'Eres el sentir que me toca vivir\n            Llena de ilusiones y motivaciones\n            Nuevas para m\xED'
 }, {
     id: 17,
-    text: "Tienes, en tus ojos mi f\xE9 y esperanza\n            esa magia que nunca me cansa\n            llevas en tu ser, tanto que aprender"
+    author: 'Rocío Durcal',
+    song: 'El amor más bonito',
+    text: 'Tienes, en tus ojos mi f\xE9 y esperanza\n            Esa magia que nunca me cansa\n            Llevas en tu ser, tanto que aprender'
 }, {
     id: 18,
-    text: "s\xE9 que estoy perdido\n            s\xE9 que estoy muriendo sin tu amor\n            sin tu calor por tu adi\xF3s"
+    author: 'Los Recoditos',
+    song: 'Ando Bien Pedo',
+    text: 'S\xE9 que estoy perdido\n            S\xE9 que estoy muriendo sin tu amor\n            Sin tu calor por tu adi\xF3s'
 }, {
     id: 19,
-    text: "Ando bien pedo, bien loco\n            cant\xE1ndole al recuerdo mis penas\n            p\xECdiendo tu recuerdo y tus besitos"
+    author: 'Los Recoditos',
+    song: 'Ando Bien Pedo',
+    text: 'Ando bien pedo, bien loco\n            Cant\xE1ndole al recuerdo mis penas\n            Pidiendo tu recuerdo y tus besitos'
 }, {
     id: 20,
-    text: "S\xE9 que es un castigo\n            que me des tu olvido\n            qu\xE9 dolor, cu\xE1nto dolor siento yo"
+    author: 'Los Recoditos',
+    song: 'Ando Bien Pedo',
+    text: 'S\xE9 que es un castigo\n            Que me des tu olvido\n            Qu\xE9 dolor, cu\xE1nto dolor siento yo'
+}, {
+    id: 21,
+    author: 'Ana Gabriel',
+    song: 'Tú lo Decidiste',
+    text: 'Te fuiste sin siquiera despedirte\n\t    Pensaste y despu\xE9s me buscar\xE1\n\t    Pues mira te fallaron tus deseos\n\t    Y al final de cuentas fuiste t\xFA quien me extra\xF1\xF3'
+}, {
+    id: 22,
+    author: 'Ana Gabriel',
+    song: 'Tú lo Decidiste',
+    text: 'Nadie sabe lo que tiene \n\t    Hasta que lo ve perdido\n\t    Nunca t\xFA debiste decidirlo,\n\t    Pues creo que eran cosas de los dos,\n\t    Nunca tu debiste decidirlo,\n\t    Pues mira ya aprendiste la lecci\xF3n'
+}, {
+    id: 23,
+    author: 'Ana Gabriel',
+    song: 'Tú lo Decidiste',
+    text: 'Y vienes a contarme tu tristeza,\n\t    Y quieres aclarar la situaci\xF3n\n\t    Pretendes que yo olvide los detalles,\n\t    Que perdone todo y volvamos a empezar'
+}, {
+    id: 24,
+    author: 'Julión Álvarez',
+    song: 'El Amor de su Vida',
+    text: 'Yo, yo era el amor de su vida\n\t    Yo disfrut\xE9 sus caricias y su primer beso\n\t    Fue m\xEDo y fue m\xEDa'
+}, {
+    id: 25,
+    author: 'Julión Álvarez',
+    song: 'El Amor de su Vida',
+    text: 'Yo, no supe lo que ten\xEDa,\n\t    Me acostumbr\xE9 a la rutina y la hica llorar\n\t    Se maldito d\xEDa'
+}, {
+    id: 26,
+    author: 'Julión Álvarez',
+    song: 'El Amor de su Vida',
+    text: 'Puede que te digan\n\t    Que he guardado todas tus fotograf\xEDas\n\t    Que me aferro como un loco en esperanza\n\t    Que alg\xFAn d\xEDa te despiertes recordando\n\t    Que a pesar de mis errores'
+}, {
+    id: 27,
+    author: 'Selena',
+    song: 'Como la flor',
+    text: 'Yo s\xE9 que tienes un nuevo amor\n\t    Sin embargo, te deseo lo mejor\n\t    Si en m\xED, no encontraste felicidad\n\t    Tal vez, alguien m\xE1s te la dar\xE1'
+}, {
+    id: 28,
+    author: 'Selena',
+    song: 'Como la flor',
+    text: 'Si vieras c\xF3mo duele perder tu amor\n\t    Con tu adi\xF3s te llevaste mi coraz\xF3n'
+}, {
+    id: 29,
+    author: 'Los Ángeles Azules',
+    song: 'Cómo te voy a Olvidar',
+    text: 'Si en una rosa est\xE1s t\xFA\n\t    Si en cada respirar est\xE1s t\xFA\n\t    C\xF3mo te voy a olvidar'
+}, {
+    id: 30,
+    author: 'Los Ángeles Azules',
+    song: 'Cómo te voy a Olvidar',
+    text: 'C\xF3mo no acordarme de t\xED\n\t    De qu\xE9 manera olvidarte\n\t    Si todo me recuerda a t\xED\n\t    En tods partes est\xE1s t\xFA'
+}, {
+    id: 31,
+    author: 'Banda MS',
+    song: 'Me vas a Extrañar',
+    text: 'No me alcanz\xF3 el cari\xF1o \n\t    Para verte contenta\n\t    Te amaba como un loco\n\t    Y no te diste cuenta'
+}, {
+    id: 32,
+    author: 'Banda MS',
+    song: 'Me vas a Extrañar',
+    text: 'De qu\xE9 sirvi\xF3 rogarte\n\t    Para que te quedaras\n\t    Mi error fue darte todo\n\t    Cuando no vales nada'
+}, {
+    id: 33,
+    author: 'Banda MS',
+    song: 'Me vas a Extrañar',
+    text: 'Me vas a extra\xF1ar\n\t    Te apuesto lo que quieras que vas a buscarme\n\t    Y vas a llorar porque t\xFA a mi\n\t    Jam\xE1s supiste valorarme'
+}, {
+    id: 34,
+    author: 'Banda El Recodo',
+    song: 'El Sinaloense',
+    text: 'Por Dios que borracho vengo\n\t    Que me echan con la "tambora"\n\t    Que me toquen el "Quelite"\n\t    Despu\xE9s el "Ni\xF1o perdido"\n\t    Y por \xFAltimo "El torito"\n\t    Pa\' que vean c\xF3mo le brinco'
+}, {
+    id: 35,
+    author: 'Banda El Recodo',
+    song: 'El Sinaloense',
+    text: 'Soy del mero Sianloa\n\t    Donde se rompen las olas\n\t    Y busco una que ande sola\n\t    Y que no tenga marido\n\t    Pa\' no estar comprometido\n\t    Cuando resulte la boda'
+}, {
+    id: 36,
+    author: 'La arrolladora Banda El Limón',
+    song: 'Me va a pesar',
+    text: 'Nunca lo entend\xED, t\xFA me diste todo\n\t    Y yo jam\xE1s te daba lo que merec\xEDas\n\t    Cu\xE1ntas veces te he visto llorar y ha sido culpa m\xEDa\n\t    Entre m\xE1s buena eras conmigo, yo m\xE1s te ofend\xEDa'
+}, {
+    id: 37,
+    author: 'La arrolladora Banda El Limón',
+    song: 'Me va a pesar',
+    text: 'Me va a pesar, yo s\xE9 bien que me va a pesar\n\t    Cuando te vea con alguien m\xE1s y te empiece a besar\n\t    No valor\xE9 lo uie me dabas, tu coraz\xF3n lastimaba\n\t    S\xF3lo te hac\xEDa llorar'
+}, {
+    id: 38,
+    author: 'Chayito Valdéz',
+    song: 'Tres veces te engañé',
+    text: 'T\xFA que me dejabas\n\t    Yo que te esperaba\n\t    Porque tontamente\n\t    Simpre te era fiel'
+}, {
+    id: 39,
+    author: 'Chayito Valdéz',
+    song: 'Tres veces te engañé',
+    text: 'Tres veces te enga\xF1\xE9\n\t    La primera por coraje\n\t    La segunda por cari\xF1o\n\t    La tercera por placer'
 }];
 
 module.exports = legends;
@@ -132,39 +276,39 @@ var matrix = {
 
     'amoroso': {
         id: 1,
-        legendIds: [1, 2, 3, 4, 5, 6, 9, 10]
+        legendIds: [1, 2, 3, 4, 5, 6, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 23, 24, 25, 26, 27, 28, 29, 30, 31]
     },
     'cuernos': {
         id: 2,
-        legendIds: [11, 12]
+        legendIds: [11, 12, 32, 36, 37, 38, 39]
     },
     'pisteado': {
         id: 3,
-        legendIds: [7, 8]
+        legendIds: [7, 8, 18, 19, 20, 34, 35]
     },
     'arrepentido': {
         id: 4,
-        legendIds: [14]
+        legendIds: [14, 18, 19, 20, 21, 22, 23, 24, 25, 26, 33, 36, 37]
     },
     'altiro': {
         id: 5,
-        legendIds: [7, 8]
+        legendIds: [7, 8, 34]
     },
     'tristeando': {
         id: 6,
-        legendIds: [1, 2, 3, 5, 6]
+        legendIds: [1, 2, 3, 5, 6, 13, 14, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 36, 37]
     },
     'echandoperros': {
         id: 7,
-        legendIds: [3, 4, 7, 8, 9, 10]
+        legendIds: [3, 4, 7, 8, 9, 10, 11, 12, 15, 16, 17, 35]
     },
     'dolido': {
         id: 7,
-        legendIds: [1, 5, 6, 10]
+        legendIds: [1, 5, 6, 10, 11, 12, 13, 14, 18, 19, 20, 21, 22, 23, 24, 27, 28, 33, 36, 37, 38, 39]
     },
     'encabritado': {
         id: 8,
-        legendIds: [1, 5, 6, 10]
+        legendIds: []
     }
 };
 
