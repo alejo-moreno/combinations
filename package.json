@@ -6,7 +6,7 @@
   "scripts": {
     "wstyles": "node-sass -wo ./ styles.scss",
     "styles": "node-sass -o ./ styles.scss --output-style compressed",
-    "build": "NODE_PATH=. browserify -t [ babelify --presets [es2015] ] index.js > bundle.js  && npm run styles",
+    "build": "NODE_PATH=. browserify -t [ babelify --presets [es2015] --minified ]  index.js > bundle.js  && npm run styles",
     "test": "NODE_PATH=. watchify -t [ babelify --presets [es2015] ] index.js -o bundle.js -v & npm run wstyles"
   },
   "repository": {
@@ -30,6 +30,7 @@
     "babelify": "^7.3.0",
     "browserify": "^14.3.0",
     "lodash.intersection": "^4.4.0",
+    "lodash.shuffle": "^4.2.0",
     "node-sass": "^4.5.2",
     "watchify": "^3.9.0"
   }
